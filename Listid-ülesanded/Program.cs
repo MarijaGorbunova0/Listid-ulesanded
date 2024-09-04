@@ -1,29 +1,46 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 
 namespace Listid_ulesanded
 {
-    public static class Programm
+    public class Toode
+    {
+        public string Nimi { get; set; }
+        public double Kalorid { get; set; }
+
+        public Toode(string nimi, double kalorid)
+        {
+            Nimi = nimi;
+            Kalorid = kalorid;
+        }
+    }
+
+    public class Book
+    {
+        public string Nimetus { get; set; }
+        public string Author { get; set; }
+        public int Year { get; set; }
+
+        public Book(string nimetus, string author, int year)
+        {
+            Nimetus = nimetus;
+            Author = author;
+            Year = year;
+        }   
+    }
+        public static class Programm
     {
         public static void Main()
         {
+            Console.WriteLine("1. Linnad");
+            Funct.Linnad();
+
+            Console.WriteLine("\n2. Tooded");
+            Funct.Tooded();
             //2
-            List<int> randomNumbers = Funct.RandomNumb(20);
-            Console.WriteLine("Исходный список чисел:");
-            randomNumbers.ForEach(n => Console.Write(n + " "));
-
-           
-            List<int> evenNumbers = randomNumbers.Where(n => n % 2 == 0).ToList();
-            List<int> oddNumbers = randomNumbers.Where(n => n % 2 != 0).ToList();
-
-           
-            List<int> sortNumbers = evenNumbers.Concat(oddNumbers).ToList();
-
-            
-            Console.WriteLine("\n\nСписок после сортировки:");
-            sortNumbers.ForEach(n => Console.Write(n + " "));
+            Funct.ProcessNumbers(20);
         }
     }
 }
