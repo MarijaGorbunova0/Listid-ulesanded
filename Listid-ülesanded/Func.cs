@@ -173,27 +173,26 @@ namespace Listid_ulesanded
                     "2. Eemalda raamat\n" +
                     "3. Otsi raamatut\n" +
                     "4. Vaata kõiki raamatuid\n" +
-                    "5. Vaata raamatukogu\n" +
-                    "6. Välju"
+                    "5. Välju"
                 );
 
                 valik = int.Parse(Console.ReadLine());
 
                 if (valik == 1)
                 {
-                    Console.WriteLine("Kirjutage raamatunimi");
+                    Console.WriteLine("Kirjutage raamatunimi ");
                     string UusNimi = Console.ReadLine();
-                    Console.WriteLine("Kirjutage autorit");
+                    Console.WriteLine("Kirjutage autorit ");
                     string UusAutor = Console.ReadLine();
-                    Console.WriteLine("Kirjutage aasta");
+                    Console.WriteLine("Kirjutage aasta ");
                     int UusAasta = int.Parse(Console.ReadLine());
 
                     library.Add(new Book(UusNimi, UusAutor, UusAasta));
-                    Console.WriteLine("Raamat lisatud edukalt.");
+                    Console.WriteLine("Raamat lisatud edukalt");
                 }
                 else if (valik == 2)
                 {
-                    Console.WriteLine("Sisestage eemaldatava raamatu nimi:");
+                    Console.WriteLine("Sisestage eemaldatava raamatu nimi ");
                     string raamatNimi = Console.ReadLine();
                     var emaldaRaamat = library.Find(book => book.Nimetus.Equals(raamatNimi, StringComparison.OrdinalIgnoreCase));
 
@@ -209,13 +208,13 @@ namespace Listid_ulesanded
                 }
                 else if (valik == 3)
                 {
-                    Console.WriteLine("Sisestage otsitava raamatu nimi:");
+                    Console.WriteLine("Sisestage otsitava raamatu nimi ");
                     string raamatNimi = Console.ReadLine();
                     var otsiRaamat = library.Find(book => book.Nimetus.Equals(raamatNimi, StringComparison.OrdinalIgnoreCase));
 
                     if (otsiRaamat != null)
                     {
-                        Console.WriteLine($"Raamat leitud: {otsiRaamat.Nimetus} - {otsiRaamat.Author} ({otsiRaamat.Year})");
+                        Console.WriteLine($"Raamat leitud {otsiRaamat.Nimetus} - {otsiRaamat.Author} ({otsiRaamat.Year})");
                     }
                     else
                     {
@@ -224,19 +223,19 @@ namespace Listid_ulesanded
                 }
                 else if (valik == 4)
                 {
-                    Console.WriteLine("Raamatukogu:");
+                    Console.WriteLine("Raamatukogu ");
                     foreach (var book in library)
                     {
                         Console.WriteLine($"{book.Nimetus} - {book.Author} ({book.Year})");
                     }
                 }
-                else if (valik == 6)
+                else if (valik == 5)
                 {
-                    Console.WriteLine("Programm lõpetatud.");
+                    Console.WriteLine("Programm lõpetatud");
                 }
                 else
                 {
-                    Console.WriteLine("Vale valik, proovige uuesti");
+                    Console.WriteLine("Vale valik proovige uuesti");
                 }
             }
         }
