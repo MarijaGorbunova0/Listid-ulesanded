@@ -157,31 +157,88 @@ namespace Listid_ulesanded
         }
         public static void Rammatukogu()
         {
-
             List<Book> library = new List<Book>
             {
                 new Book("The Catcher in the Rye", "J.D. Salinger", 1951),
                 new Book("To Kill a Mockingbird", "Harper Lee", 1960)
             };
 
-            Console.WriteLine("Valige valik:\n1. Lisa raamat\n2. Eemalda raamat\n3. Otsi raamatut\n4. Vaata kõiki raamatuid");
-            int valik = int.Parse(Console.ReadLine());
-            if (valik == 1)
-            {
-                Console.WriteLine("kirjutage raamatunimi");
-                string UusNimi = Console.ReadLine();
-                Console.WriteLine(" kirjutage autorit");
-                string UusAutor = Console.ReadLine();
-                Console.WriteLine(" kirjutage aasta");
-                int UusAasta = int.Parse(Console.ReadLine());
+            int valik = 0;
 
-                library.Add(new Book(UusNimi, UusAutor, UusAasta ));
-                
+            while (valik != 6)
+            {
+                Console.WriteLine(
+                    "Valige valik:\n" +
+                    "1. Lisa raamat\n" +
+                    "2. Eemalda raamat\n" +
+                    "3. Otsi raamatut\n" +
+                    "4. Vaata kõiki raamatuid\n" +
+                    "5. Vaata raamatukogu\n" +
+                    "6. Välju"
+                );
+
+                valik = int.Parse(Console.ReadLine());
+
+                if (valik == 1)
+                {
+                    Console.WriteLine("Kirjutage raamatunimi");
+                    string UusNimi = Console.ReadLine();
+                    Console.WriteLine("Kirjutage autorit");
+                    string UusAutor = Console.ReadLine();
+                    Console.WriteLine("Kirjutage aasta");
+                    int UusAasta = int.Parse(Console.ReadLine());
+
+                    library.Add(new Book(UusNimi, UusAutor, UusAasta));
+                    Console.WriteLine("Raamat lisatud edukalt.");
+                }
+                else if (valik == 2)
+                {
+                    Console.WriteLine("Sisestage eemaldatava raamatu nimi:");
+                    string raamatNimi = Console.ReadLine();
+                    var emaldaRaamat = library.Find(book => book.Nimetus.Equals(raamatNimi, StringComparison.OrdinalIgnoreCase));
+
+                    if (emaldaRaamat != null)
+                    {
+                        library.Remove(emaldaRaamat);
+                        Console.WriteLine("Raamat eemaldati edukalt");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Raamatut ei leitud");
+                    }
+                }
+                else if (valik == 3)
+                {
+                    Console.WriteLine("Sisestage otsitava raamatu nimi:");
+                    string raamatNimi = Console.ReadLine();
+                    var otsiRaamat = library.Find(book => book.Nimetus.Equals(raamatNimi, StringComparison.OrdinalIgnoreCase));
+
+                    if (otsiRaamat != null)
+                    {
+                        Console.WriteLine($"Raamat leitud: {otsiRaamat.Nimetus} - {otsiRaamat.Author} ({otsiRaamat.Year})");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Raamatut ei leitud");
+                    }
+                }
+                else if (valik == 4)
+                {
+                    Console.WriteLine("Raamatukogu:");
+                    foreach (var book in library)
+                    {
+                        Console.WriteLine($"{book.Nimetus} - {book.Author} ({book.Year})");
+                    }
+                }
+                else if (valik == 6)
+                {
+                    Console.WriteLine("Programm lõpetatud.");
+                }
+                else
+                {
+                    Console.WriteLine("Vale valik, proovige uuesti");
+                }
             }
-            
         }
     }
 }
-
-
-
