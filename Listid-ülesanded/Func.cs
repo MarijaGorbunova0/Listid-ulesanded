@@ -155,6 +155,7 @@ namespace Listid_ulesanded
                 Console.WriteLine($"{toode.Nimi}: {kogus:F2} grammi");
             }
         }
+        // 5 oma. Ma tegin raamatukogu kus voib lisada raamatud, kustuda neid ja vaata 
         public static void Rammatukogu()
         {
             List<Book> library = new List<Book>
