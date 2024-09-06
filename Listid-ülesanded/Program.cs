@@ -33,10 +33,13 @@ namespace Listid_ulesanded
         public static class Programm
     {
         public static void Main()
-        {
+        { 
+            // 5 oma
+            Funct.Raamatukogu();
             Console.WriteLine("1. Linnad");
+            // 4 
             Funct.Linnad();
-
+            //3
             Console.WriteLine("\n2. Tooded");
             Funct.Tooded();
             //2
